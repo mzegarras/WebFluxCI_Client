@@ -2,6 +2,7 @@ package com.example.lab04client.services;
 
 import com.example.lab04client.config.ApiProperties;
 
+import com.example.lab04client.exceptions.ProductNotFoundException;
 import com.example.lab04client.models.Producto;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -109,6 +110,37 @@ public class ProductoServiceImplTest {
         RecordedRequest request = mockWebServer.takeRequest();
         assertThat(request.getPath()).isEqualTo("/products/1");
         assertThat(request.getMethod()).isEqualTo("GET");
+    }
+
+
+    @Test
+    public void findById_thenNoFoundError_ok() throws InterruptedException {
+
+        MockResponse mockResponse = new MockResponse()
+                .addHeader("Content-Type", "application/json")
+                .setResponseCode(404)
+                .setBody("{}");
+
+        mockWebServer.enqueue(mockResponse);
+
+        Mono<Producto> productoMono = productoService.findById("1");
+
+        /*StepVerifier.create(productoMono.log())
+                .expectError(ProductNotFoundException.class)
+                .verify();*/
+
+        StepVerifier.create(productoMono.log())
+                .expectErrorSatisfies(throwable->{
+                    assertThat(throwable instanceof ProductNotFoundException).isTrue();
+                    ProductNotFoundException ex = (ProductNotFoundException) throwable;
+                    assertThat(ex.getId()).isEqualTo("1");
+                })
+                .verify();
+
+        RecordedRequest request = mockWebServer.takeRequest();
+        assertThat(request.getPath()).isEqualTo("/products/1");
+        assertThat(request.getMethod()).isEqualTo("GET");
+
     }
 
     @Test
