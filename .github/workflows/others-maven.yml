@@ -33,4 +33,8 @@ jobs:
           files: ./target/surefire-reports/*.xml
           report_individual_runs: true
           deduplicate_classes_by_file_name: false
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+          with:
+            token: ${{ secrets.CODECOV_TOKEN }}
       
