@@ -14,7 +14,7 @@ on:
 jobs:
 
   test:
-    name: Test - Units & Integrations
+    name: Continuous Integration - Deployment
     runs-on: ubuntu-18.04
 
     steps:
