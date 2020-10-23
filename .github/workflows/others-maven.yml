@@ -24,6 +24,9 @@ jobs:
 
       - name: Generar JAR
         run: mvn -B verify
+      - uses: jwgmeligmeyling/spotbugs-github-action@master
+        with:
+          path: '**/spotbugsXml.xml'
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.3
         if: always()
@@ -38,4 +41,4 @@ jobs:
         with:
           name: jacoco-report
           path: target/site/jacoco/
-      
+
