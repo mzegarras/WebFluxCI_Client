@@ -1,7 +1,9 @@
 package com.example.lab04client.services;
 
 import com.example.lab04client.config.ApiProperties;
+import com.example.lab04client.exceptions.ProductNotFoundException;
 import com.example.lab04client.models.Producto;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -42,7 +44,9 @@ public class ProductoServiceImpl implements ProductoService {
                 .uri( this.apiProperties.getProductsById(),params)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
+                .onStatus(HttpStatus::is4xxClientError, response -> Mono.error(new ProductNotFoundException(id)))
                 .bodyToMono(Producto.class);
+
     }
 
     @Override
@@ -70,7 +74,7 @@ public class ProductoServiceImpl implements ProductoService {
     public Mono<Void> delete(String id) {
         return webClient.delete()
                 .uri(this.apiProperties.getProductsDeleted(), Collections.singletonMap("id",id))
-                .exchange()
-                .then();
+                .retrieve()
+                .bodyToMono(Void.class);
     }
 }
