@@ -180,6 +180,8 @@
 				</executions>
 				<configuration>
 					<threshold>low</threshold>
+					<xmlOutput>true</xmlOutput>
+					<failOnError>false</failOnError>
 					<plugins>
 						<plugin>
 							<groupId>com.h3xstream.findsecbugs</groupId>
