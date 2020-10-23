@@ -38,4 +38,7 @@ jobs:
         with:
           name: jacoco-report
           path: target/site/jacoco/
+      - uses: jwgmeligmeyling/spotbugs-github-action@master
+        with:
+          path: '**/spotbugsXml.xml'
       
