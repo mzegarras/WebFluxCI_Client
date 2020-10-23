@@ -109,8 +109,6 @@ public class ProductoServiceImplTest {
         RecordedRequest request = mockWebServer.takeRequest();
         assertThat(request.getPath()).isEqualTo("/products/1");
         assertThat(request.getMethod()).isEqualTo("GET");
-
-
     }
 
     @Test
