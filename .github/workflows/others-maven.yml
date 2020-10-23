@@ -33,4 +33,9 @@ jobs:
           files: ./target/surefire-reports/*.xml
           report_individual_runs: true
           deduplicate_classes_by_file_name: false
+      - name: Upload Jacoco coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
       
