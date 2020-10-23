@@ -1,0 +1,5 @@
+server:
+  port: 8090
+
+apis:
+  url: http://localhost:8080/productos
