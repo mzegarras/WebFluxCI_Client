@@ -3,17 +3,24 @@
 
 name: Java CI with Maven
 
-on:
-  push:
-    branches:
-      - main
+#on:
+#  push:
+#    branches:
+#      - main
 #  pull_request:
 #    branches:
 #      - main
-        
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
 jobs:
 
-  test:
+  ci:
+    if: github.event.pull_request.merged == true
     name: Continuous Integration - Deployment
     runs-on: ubuntu-18.04
 
