@@ -6,7 +6,7 @@ name: Java CI with Maven 1
 on:
   push:
     branches:
-      - '**'
+      - 'features/*'
     
 jobs:
 
