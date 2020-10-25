@@ -164,9 +164,9 @@
 					<analysisCache>true</analysisCache>
 					<printFailingErrors>true</printFailingErrors>
 					<linkXRef>false</linkXRef>
-					<includeTests>true</includeTests>
+					<!--includeTests>true</includeTests>
 					<failOnViolation>false</failOnViolation>
-					<skipEmptyReport>false</skipEmptyReport>
+					<skipEmptyReport>false</skipEmptyReport-->
 				</configuration>
 			</plugin>
 
