@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 public class ApiProperties {
 
     private String url;
-
     private String productsListAll;
     private String productsById;
     private String productsCreated;
