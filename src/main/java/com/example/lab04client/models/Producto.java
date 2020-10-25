@@ -15,8 +15,7 @@ public class Producto implements Serializable {
     private Double precio;
     private Date createAt;
     private Categoria categoria;
-
-
+    
  /*   public Date getCreateAt() {
         //return this.createAt;
         return this.createAt != null ? (Date) createAt.clone() : null;
