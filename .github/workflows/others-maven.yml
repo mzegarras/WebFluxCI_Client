@@ -39,7 +39,7 @@ jobs:
           report_individual_runs: true
           deduplicate_classes_by_file_name: false
       - uses: jwgmeligmeyling/pmd-github-action@master
-          if: always()
+        if: always()
           with:
             path: '**/pmd.xml'
       - name: Upload Jacoco coverage report
