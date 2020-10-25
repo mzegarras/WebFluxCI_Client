@@ -57,7 +57,8 @@ jobs:
         with:
           file: target/site/jacoco/jacoco.xml
           fail_ci_if_error: false
-      - name: Build Docker image
+      - uses: actions/checkout@v1
+        name: Build Docker image
         if: always()
         run: docker build --file ./src/main/docker/Dockerfile --tag mservice1:latest .
 #      - name: Check docker
