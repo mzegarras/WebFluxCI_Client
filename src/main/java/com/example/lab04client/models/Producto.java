@@ -16,7 +16,7 @@ public class Producto implements Serializable {
     private Date createAt;
     private Categoria categoria;
 
- /*   public Date getCreateAt() {
+    public Date getCreateAt() {
         //return this.createAt;
         return this.createAt != null ? (Date) createAt.clone() : null;
     }
@@ -25,6 +25,6 @@ public class Producto implements Serializable {
         //this.createAt=createAt;
         this.createAt = createAt != null ? (Date) createAt.clone() : null;
     }
-*/
+
 
 }
