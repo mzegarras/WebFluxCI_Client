@@ -13,6 +13,7 @@ import reactor.core.publisher.Mono;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
@@ -28,7 +29,7 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public Flux<Producto> findAll() {
         return webClient.get()
-                //.uri(this.apiProperties.getProductsListAll())
+                .uri(this.apiProperties.getProductsListAll())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .flatMapMany(response->response.bodyToFlux(Producto.class));
