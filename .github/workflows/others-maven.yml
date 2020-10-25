@@ -11,7 +11,7 @@ on:
 jobs:
 
   test:
-    name: Continuous Integration
+    name: Prepare machine
     runs-on: ubuntu-18.04
 
     steps:
@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: 11.0.4
 
-      - name: Generar JAR
+      - name: Maven verify
         run: mvn -B verify
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.3
