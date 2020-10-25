@@ -57,7 +57,10 @@ jobs:
           file: ./src/main/docker/Dockerfile
 #          builder: ${{ steps.buildx.outputs.name }}
           push: false
-          tags:  mzegarra/mservice1:latest  
+          tags:  mzegarra/mservice1:latest
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
 #          cache-from: type=local,src=/tmp/.buildx-cache
 #          cache-to: type=local,dest=/tmp/.buildx-cache
       
