@@ -1,7 +1,7 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Java CI with Maven 1
+name: Run unit tests
 
 on:
   push:
@@ -11,18 +11,23 @@ on:
 jobs:
 
   test:
-    name: Continuous Integration
+    name: Prepare machine
     runs-on: ubuntu-18.04
 
     steps:
-
+      - name: Hello world
+        run: echo Hello world $FIRST_NAME $middle_name $Last_Name!
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
       - uses: actions/checkout@v1
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: 11.0.4
 
-      - name: Generar JAR
+      - name: Run unit tests
         run: mvn -B verify
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.3
@@ -33,6 +38,14 @@ jobs:
           files: ./target/surefire-reports/*.xml
           report_individual_runs: true
           deduplicate_classes_by_file_name: false
+      - uses: jwgmeligmeyling/pmd-github-action@master
+        if: always()
+        with:
+          path: '**/pmd.xml'
+      - uses: jwgmeligmeyling/spotbugs-github-action@master
+        if: always()
+        with:
+          path: '**/spotbugsXml.xml'
       - name: Upload Jacoco coverage report
         uses: actions/upload-artifact@v2
         with:
