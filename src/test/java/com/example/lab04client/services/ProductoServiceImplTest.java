@@ -125,10 +125,6 @@ public class ProductoServiceImplTest {
 
         Mono<Producto> productoMono = productoService.findById("1");
 
-        /*StepVerifier.create(productoMono.log())
-                .expectError(ProductNotFoundException.class)
-                .verify();*/
-
         StepVerifier.create(productoMono.log())
                 .expectErrorSatisfies(throwable->{
                     assertThat(throwable instanceof ProductNotFoundException).isTrue();
