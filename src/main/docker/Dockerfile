@@ -11,7 +11,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     rm /etc/localtime; \
 	dpkg-reconfigure -fnoninteractive tzdata
 
-ADD target/lab04-client-*.jar app.jar
+ADD target/lab04-client1-*.jar app.jar
 ADD src/main/docker/entrypoint.sh entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
