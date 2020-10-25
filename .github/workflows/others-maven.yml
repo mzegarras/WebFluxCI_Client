@@ -42,6 +42,10 @@ jobs:
         if: always()
         with:
           path: '**/pmd.xml'
+      - uses: jwgmeligmeyling/spotbugs-github-action@master
+        if: always()
+        with:
+          path: '**/spotbugsXml.xml'
       - name: Upload Jacoco coverage report
         uses: actions/upload-artifact@v2
         with:
