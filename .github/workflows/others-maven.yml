@@ -38,6 +38,10 @@ jobs:
           files: ./target/surefire-reports/*.xml
           report_individual_runs: true
           deduplicate_classes_by_file_name: false
+      - uses: jwgmeligmeyling/pmd-github-action@master
+          if: always()
+          with:
+            path: '**/pmd.xml'
       - name: Upload Jacoco coverage report
         uses: actions/upload-artifact@v2
         with:
