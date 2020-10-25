@@ -48,7 +48,10 @@ jobs:
           path: '**/spotbugsXml.xml'
       - name: Upload Jacoco coverage report
         uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: jacoco-report
           path: target/site/jacoco/
-
+      - name: Generate Jacoco Badge
+        uses: cicirello/jacoco-badge-generator@v1.0.0
+        if: always()
