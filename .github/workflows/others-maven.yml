@@ -40,8 +40,8 @@ jobs:
           deduplicate_classes_by_file_name: false
       - uses: jwgmeligmeyling/pmd-github-action@master
         if: always()
-          with:
-            path: '**/pmd.xml'
+        with:
+          path: '**/pmd.xml'
       - name: Upload Jacoco coverage report
         uses: actions/upload-artifact@v2
         with:
