@@ -15,8 +15,10 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
+      - id: dotenv
+        uses: ./.github/actions/dotenv-action
       - name: Hello world
-        run: echo Hello world $FIRST_NAME $middle_name $Last_Name!
+        run: echo Hello world $FIRST_NAME $middle_name $Last_Name ${{ steps.dotenv.outputs.version }}!
         env:
           FIRST_NAME: Mona
           middle_name: The
