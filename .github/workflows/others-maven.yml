@@ -61,7 +61,6 @@ jobs:
         with:
           file: target/site/jacoco/jacoco.xml
           fail_ci_if_error: false
-      - uses: actions/checkout@v1
       - name: Build Docker image
         if: always()
         run: docker build --file ./src/main/docker/Dockerfile --tag ${{ steps.dotenv.outputs.APP}}-${{ steps.dotenv.outputs.APP_MODULE}}:latest ./
