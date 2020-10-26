@@ -64,7 +64,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Build Docker image
         if: always()
-        run: docker build --file ./src/main/docker/Dockerfile --tag mservice1:latest .
+        run: docker build --file ./src/main/docker/Dockerfile --tag ${{ steps.dotenv.outputs.APP}}-${{ steps.dotenv.outputs.APP_MODULE}} :latest .
 #      - name: Check docker
 #        id: docker_build
 #        uses: docker/build-push-action@v2
