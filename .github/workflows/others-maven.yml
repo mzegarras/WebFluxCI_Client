@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: falti/dotenv-action@v0.2.5
         id: dotenv
         with:
@@ -64,20 +64,3 @@ jobs:
       - name: Build Docker image
         if: always()
         run: docker build --file ./src/main/docker/Dockerfile --tag ${{ steps.dotenv.outputs.APP}}-${{ steps.dotenv.outputs.APP_MODULE}}:latest ./
-#      - name: Check docker
-#        id: docker_build
-#        uses: docker/build-push-action@v2
-#        if: always()
-#        with:
-#          context: ./
-#          file: ./src/main/docker/Dockerfile
-#          push: false
-#          tags:  mservice1:latest
-
-#  - name: Do Something with env files
-#    env:
-#      QA_ENV_FILE: ${{ secrets.QA_ENV_FILE }}
-#      PROD_ENV_FILE: ${{ secrets.PROD_ENV_FILE }}
-#    run: |
-#      [ "$YOUR_ENVIRONMENT" = qa ] && echo $QA_ENV_FILE | base64 --decode > .env
-#      [ "$YOUR_ENVIRONMENT" = prod ] && echo $PROD_ENV_FILE | base64 --decode > .env
