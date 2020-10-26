@@ -66,6 +66,6 @@ jobs:
           file: target/site/jacoco/jacoco.xml
           fail_ci_if_error: false
       - name: Build Docker image
-        run: docker build --file ./src/main/docker/Dockerfile --tag ${{ steps.dotenv.outputs.APP}}-${{ steps.dotenv.outputs.APP_MODULE}}:latest ./
+        run: docker build --file ./src/main/docker/Dockerfile --tag ${{ steps.dotenv.outputs.DOCKER_REPOSITORY}}/${{ steps.dotenv.outputs.APP}}-${{ steps.dotenv.outputs.APP_MODULE}}:latest ./
       - name: Build Docker image
-        run: docker push ${{ steps.dotenv.outputs.APP}}-${{ steps.dotenv.outputs.APP_MODULE}}:latest
+        run: docker push ${{ steps.dotenv.outputs.DOCKER_REPOSITORY}}/${{ steps.dotenv.outputs.APP}}-${{ steps.dotenv.outputs.APP_MODULE}}:latest
