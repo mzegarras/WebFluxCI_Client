@@ -17,7 +17,8 @@ jobs:
     steps:
       - uses: falti/dotenv-action@v0.2.5
         id: dotenv
-        path: ./config/dev.env
+        with:
+          path: ./config/dev.env
       - name: Hello world
         run: echo Hello world $FIRST_NAME $middle_name $Last_Name ${{ steps.dotenv.outputs.version }}!
         env:
